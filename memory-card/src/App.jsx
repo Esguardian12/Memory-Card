@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import Scoreboard from './components/Scoreboard';
+import Card from './components/Card';
 import './styles/App.css';
 
 export default function App() {
@@ -61,12 +63,20 @@ export default function App() {
   return (
     <div className="app-container">
       <header>
-        <h1>Memory Card Game</h1>
-        {/* <Scoreboard score={score} bestScore={bestScore} /> */}
+        <h1>Pokemon Memory Game</h1>
+        <Scoreboard score={score} bestScore={bestScore} />
       </header>
       
       <main className="card-grid">
-        {/* Map over your cards state here and pass data to <Card /> components */}
+        {cards.map((card) => (
+          <Card
+            key={card.id}
+            id={card.id}
+            name={card.name}
+            image={card.image}
+            handleClick={handleCardClick}
+          />
+        ))}
       </main>
     </div>
   );
